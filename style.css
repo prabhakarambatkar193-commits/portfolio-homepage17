@@ -1,0 +1,68 @@
+/* Reset & Base Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: #f8fafc;
+    color: #1e293b;
+    line-height: 1.5;
+    padding: 2rem;
+}
+
+.gallery-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.gallery-header h1 {
+    font-size: 2.25rem;
+    font-weight: 700;
+    color: #0f172a;
+}
+
+.gallery-header p {
+    color: #64748b;
+}
+
+/* Responsive Grid Layout */
+.gallery-grid {
+    display: grid;
+    /* Automatically fit columns with a minimum width of 280px */
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Gallery Item Container */
+.gallery-item {
+    background-color: #e2e8f0;
+    border-radius: 0.75rem;
+    overflow: hidden;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover Effect using GPU-friendly transform (prevents layout thrashing) */
+.gallery-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+}
+
+/* Image Styling with Aspect Ratio to avoid layout shifts */
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 3 / 2;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.05);
+}
